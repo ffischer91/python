@@ -1,5 +1,7 @@
 import socket
 import sys  
+import datetime
+import time
 
 UDP_IP = "" # = 0.0.0.0 u IPv4 fe80::cafe:2%enx00e04c13590c
 UDP_PORT = 5555
@@ -26,4 +28,8 @@ while True:
     print "received message:", data
     print "received from:", addr
     sock.sendto(MESSAGE, (addr[0], UDP_PORT_DEST, 0,5))
-    print "send message:", data
+    sock.sendto(MESSAGE, (addr[0], UDP_PORT_DEST, 0,5))
+    sock.sendto(MESSAGE, (addr[0], UDP_PORT_DEST, 0,5))
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    print "send message 3-times:", data, st
